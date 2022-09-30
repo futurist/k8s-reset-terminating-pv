@@ -22,12 +22,12 @@ go build -o resetpv
 
 ```text
 Usage:
-  resetpv [flags] <persistent volume name>
+  resetpv [flags] <pv name>|<namespace/pvc name>
 
 Flags:
-      --etcd-ca        string   CA Certificate used by etcd (default "ca.crt")
-      --etcd-cert      string   Public key used by etcd (default "etcd.crt")
-      --etcd-key       string   Private key used by etcd (default "etcd.key")
+      --etcd-ca        string   CA Certificate used by etcd, ex: /etc/kubernetes/pki/etcd/ca.crt (default "ca.crt")
+      --etcd-cert      string   Public key used by etcd, ex: /etc/kubernetes/pki/etcd/server.crt (default "etcd.crt")
+      --etcd-key       string   Private key used by etcd, ex: /etc/kubernetes/pki/etcd/server.key (default "etcd.key")
       --etcd-host      string   The etcd domain name or IP (default "localhost")
       --etcd-port      int      The etcd port number (default 2379)
       --k8s-key-prefix string   The etcd key prefix for kubernetes resources. (default "registry")
@@ -48,6 +48,7 @@ Example:
 
 ```shell
 ./resetpv --k8s-key-prefix kubernetes.io pv-eef4ec4b-326d-47e6-b11c-6474a5fd4d89
+./resetpv --k8s-key-prefix kubernetes.io some-namespace/pvc-eef4ec4b-326d-47e6-b11c-6474a5fd4d89
 ```
 
 ## License
